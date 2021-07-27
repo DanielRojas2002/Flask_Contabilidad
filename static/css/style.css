@@ -1,0 +1,66 @@
+
+
+:root {
+    --dark: #16191c;
+    --darkbscuro: #1e2126;
+    --light: #ffffff;
+
+}
+
+body
+{
+    font-family: 'Spartan', sans-serif;
+    font-weight: 500 px;
+    color:var(--light);
+}
+
+.bg-dark { background-color :var(--dark)!important ;}
+
+.bg-dark-x{background-color:black;}
+
+.form-control,.btn{min-height:4 rem;line-height: initial;}
+
+.fondo{background-color:green;}
+
+.pantalla{background-color:yellow;}
+
+
+.cafe{background-color: brown;}
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.portada{
+    
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100% ;
+    text-align: center;
+
+}
+
+.url a:hover{background-color:burlywood;}
+.bo{background-color: burlywood;}
+
+.barra{background-color: bisque;}
+
+.main{background-color:aliceblue}
+
+.boton a:hover{background-color:red;
+    border-radius: 200px 200px 200px 200px;}
+    
+  
+.botonsecundario a:hover{background-color:orange;
+    border-radius: 200px 200px 200px 200px;
+}
+
+.botonforms{background-color:orange;
+    border-radius: 200px 200px 200px 200px;}

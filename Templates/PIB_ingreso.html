@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/style.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body >
+
+    <main class="container-fluid botonsecundario ">
+        <div class="row bo text-center   barra url ">
+            <div class="col-12 col-lg-12">
+                <h1 >PIB POR EL METODO DEL INGRESO</h1>
+
+            </div>
+            <div class="col-12 col-lg-12 navbar navbar-light barra">
+                <a href="{{url_for('MENU')}}" class="navbar-text font-weight-bold text-dark btn bo w-100 rounded-pill" >ATRAS</a>
+      
+
+            </div>
+        </div>
+      
+        
+        <div class="row">
+            {% from "_macro.html" import render_field %}
+            <div class="col-12 col-lg-6 mt-5">
+                <div class="card w-100 ">
+                    <div class="card-body text-dark border border-dark rounded ">
+                        <h5 class="card-title text-center">INGRESE LOS DATOS</h5>
+                        <p class="card-text border text-center">Ingrese sus datos para poder calcular el PIB </p>
+                        <form class="text-form"  method="POST">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                            
+                            <label for="exampleInputEmail1" class="form-label ">Dime los Impuestos Indirectos</label>
+                            {{render_field (form.im_in,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0" )}}
+
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime los Ingresos de los Propietarios</label>
+                            {{render_field (form.ig_p,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0"  )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime los Intereses</label>                            
+                            {{render_field (form.intereses,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0"  )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime la Depreciacion</label>
+                            {{render_field (form.dep,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0"  )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime los Beneficios Corporativos</label>
+                            {{render_field (form.b_corp,type="number",min="0", class="form-control bg-dark-x  mb-3" , value="0" )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime la Renta</label>
+                            {{render_field (form.renta,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0"  )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime la Remuneraciones de los trabajadores</label>
+                            {{render_field (form.r_trab,type="number",min="0", class="form-control bg-dark-x  mb-3", value="0"  )}}
+
+                            <label for="exampleInputEmail1" class="form-label ">Dime el Ingreso Neto de los Factores Extranjeros</label>
+                            {{render_field (form.in_fe,type="number",min="0", class="form-control bg-dark-x  mb-3" , value="0" )}}
+                            
+                            {{render_field (form.botoncalcular, type="submit" ,class="btn btn-outline-primary w-100 rounded-pill ")}}
+                            
+                        </form>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="col-12 col-lg-6 mt-5">
+                <div class="card w-100 ">
+                    <div class="card-body text-dark border border-dark rounded ">
+                        <h5 class="card-title text-center">RESPUESTAS</h5>
+                        <p class="card-text border text-center">Aqui se ingresaran las Respuesta cuando haga la Operacion</p>
+                        {%for ingreso,pib in calculo%}
+                            <p> El Ingreso Nacional es: {{ingreso}}</p>
+                            <p> El PIB es : {{pib}}</p>
+                        {%endfor%}                             
+                    </div>
+                </div>
+            </div>
+        
+        <div class="row ">
+            <div class=" col-12 col-lg-12 mt-5 ">
+                <h5 class="text-center">HISTORIAL</h5>
+                <div class="table-responsive">
+                    <table class="table table-light  table-hover table table-bordered caption-top table-sm " id="tabla"> 
+                        <thead>
+                            <tr class="table-dark">
+           
+                                <th scope="col">ID</th>
+                                <th scope="col">IMPUESTO_INDIRECTO</th>
+                                <th scope="col">PROPIETARIOS</th>
+                                <th scope="col">INTERESES</th>
+                                <th scope="col">DEPRECIACION</th>
+                                <th scope="col">BENEFICIOS_CORP</th>
+                                <th scope="col">RENTA</th>
+                                <th scope="col">RENUMERACIONES</th>
+                                <th scope="col">INGRESO_NETO</th>
+                                <th scope="col">INGRESO_NACIONAL</th>
+                                <th scope="col">PIB</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {%for y in lista%}
+                                <tr>
+                                    <td>{{loop.index}}</td>
+                                    <td>{{y[1]}}</td>
+                                    <td>{{y[2]}}</td>
+                                    <td>{{y[3]}}</td>
+                                    <td>{{y[4]}}</td>
+                                    <td>{{y[5]}}</td>
+                                    <td>{{y[6]}}</td>
+                                    <td>{{y[7]}}</td>
+                                    <td>{{y[8]}}</td>
+                                    
+                                    <td>{{y[10]}}</td>
+                                    <td>{{y[11]}}</td>
+                                    
+                                    
+                                </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+            
+
+    </main>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

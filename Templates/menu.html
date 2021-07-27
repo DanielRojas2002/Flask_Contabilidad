@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="static/css/style.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body class="main">
+        <nav class="navbar navbar-expand-lg navbar-light barra url ">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">EJEMPLOS--></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                
+              
+              <div class="collapse navbar-collapse d-lg-flex justify-content-around" id="navbarSupportedContent">
+                    <ul class="navbar-nav  ">
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">POLIZA DE DIARIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">ESTADO FINANCIERO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">UTILIDAD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">NOMINA </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">ANALISIS DE VARIABLES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">PROGRATEOS 1 Y 2</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">COSTOS</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="Login.html">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MAS</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="Login.html">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <div class="container-fluid">
+                                <a href="{{url_for('login')}}" class="navbar-text font-weight-bold text-dark btn bo w-100 rounded-pill" >SALIR</a>
+                            </div>
+
+                        </li>
+                    </ul>
+               </div>
+
+                    
+
+            </div>
+        </nav>
+
+        <main class="container-fluid g-0  ">
+        
+            <div class="row mt-0 mt-lg-5 g-0 d-flex justify-content-around boton">
+                <div class="col-12 col-lg-3  ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/poliza.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        
+                        <div class="card-body  shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >POLIZA DE DIARIO</h4>
+                            <h6 class="card-title">Materia: Contabilidad</h6>
+                            <p class="card-text">Si quieres hacer polizas de Diario de una manera dinamica esta tarjeta es para ti</p>
+                          <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div> 
+                </div>
+                <div class="col-12 mt-5 mt-lg-0 col-lg-3   ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/estado-financiero.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >ESTADO FINANCIERO</h4>
+                            <h6 class="card-title">Materia: Costos</h6>
+                            <p class="card-text">Si quieres hacer el Estado Financiero de una manera dinamica esta tarjeta es para ti</p>
+                            <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-lg-3  mt-5 mt-lg-0  ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/utilidad.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >UTILIDAD</h4>
+                            <h6 class="card-title">Materia: Contabilidad Administrativa</h6>
+                            <p class="card-text">Si quieres sacar la Utilidad de una manera dinamica esta tarjeta es para ti</p>
+                            <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+            <div class="row mt-5 g-0 d-flex justify-content-around boton">
+                <div class="col-12 col-lg-3 mt-5 mt-lg-0 ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/nomina.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >NOMINA</h4>
+                            <h6 class="card-title">Materia: Costos</h6>
+                            <p class="card-text">Si quieres calcular nominas de una manera dinamica esta tarjeta es para ti</p>
+                          <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div> 
+                </div>
+                <div class="col-12 col-lg-3 mt-5 mt-lg-0   ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/analisis-variables.png')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >ANALISIS DE VARIABLES</h4>
+                            <h6 class="card-title">Materia: Contabilidad Administrativa</h6>
+                            <p class="card-text">Si quieres sacar el rango de produccion de una manera dinamica esta tarjeta es para ti</p>
+                            <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-lg-3  mt-5 mt-lg-0  ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/prograteo.png')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded"> 
+                            <h4 class="card-title" >PROGRATEO</h4>
+                            <h6 class="card-title">Materia: Costos</h6>
+                            <p class="card-text">Si quieres calcular el Prograteo 1 y 2 de una manera dinamica esta tarjeta es para ti</p>
+                            <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+
+            <div class="row mt-5 g-0 d-flex justify-content-center text-center">
+                <div class="col-12 col-lg-10  mt-5 mt-lg-0 ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/pib.jpg')}}" alt="Logo Facpya"  height="300" class="card-img-top">
+
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >PRODUCTO INTERNO BRUTO</h4>
+                            <h6 class="card-title">Materia: MacroeEconomia</h6>
+                            <p class="card-text">Si quieres sacar el PIB de los dos metodos de una manera dinamica esta tarjeta es para ti</p>
+                            <div class=" row d-flex justify-content-around botonsecundario  ">
+                                <a href="{{url_for('PIB_INGRESO')}}" class="btn btn-primary d-inline-block col-12 col-lg-4  mb-2 ">PIB METODO DEL INGRESO</a>
+                                <a href="{{url_for('PIB_GASTO')}}" class="btn btn-primary  col-12 col-lg-4  mb-2 ">PIB METODO DEL GASTO</a>
+
+                            </div>
+                        </div>
+                      </div> 
+                </div>
+
+            
+            </div>
+          
+            
+        
+            <div class="row mt-5 g-0 d-flex justify-content-around boton">
+                <div class="col-12 col-lg-3  mt-5 mt-lg-0 ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/desempleo.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >TASA DE DESEMPLEO</h4>
+                            <h6 class="card-title">Materia: Costos</h6>
+                            <p class="card-text">Si quieres calcularla taza de desempleo de una manera dinamica esta tarjeta es para ti</p>
+                          <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div> 
+                </div>
+                <div class="col-12 col-lg-6 mt-5 mt-lg-0  ">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/estado-financiero.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >
+                                <ul>
+                                    <li>La Inflacion</li>
+                                    <li>Indice de preciosProducto</li>
+                                    <li>Producto Interno Bruto Nominal</li>
+                                </ul>
+                            </h4>
+                            <h6 class="card-title">Materia: Costos</h6>
+                            <p class="card-text">Si quieres sacar la 3 Opciones de arriba de una manera dinamica esta tarjeta es para ti</p>
+                            <a href="#" class="btn btn-primary w-100">IR</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 g-0 d-flex justify-content-around">
+                <div class="col-12 col-lg-8  mt-5 mt-lg-0">
+                    <div class="card shadow-lg  bg-body rounded">
+                        <img src="{{ url_for('static' , filename='img/medidas.jpg')}}" alt="Logo Facpya" width="100" height="300" class="card-img-top">
+                        <div class="card-body text-center shadow-lg  bg-body rounded">
+                            <h4 class="card-title" >MAS OPCIONES</h4>
+                            <p class="card-text">OTRAS FUNCIONALIDADES </p>
+                          
+                            <div class="row d-flex justify-content-around pb-2 botonsecundario ">
+                                <a href="#" class="btn btn-primary col-12 col-lg-2 mb-2">MEDIA</a>
+                                <a href="#" class="btn btn-primary   col-12 col-lg-2 mb-2">MEDIANA</a>
+                                <a href="#" class="btn btn-primary col-12 col-lg-2 mb-2">MODA</a>
+                                <a href="#" class="btn btn-primary  col-12 col-lg-4 mb-2">DESVIACION ESTANDAR</a>
+
+                            </div>
+                        </div>
+                      </div> 
+                </div>
+            </div>
+
+                
+               
+
+
+
+
+
+
+        </main>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>

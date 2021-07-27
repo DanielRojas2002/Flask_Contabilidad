@@ -1,0 +1,27 @@
+<!--Funcion que le dimos un poco de formato con boostrap 
+ creamos una funcion llamada render_field (que recibira un parametro )
+ para poder usarlos como referencia 
+ field.label dice = muestra la variable .label su nombre
+ field(**kwargs|safe) = muestra la caja segun el tipo de valor que se introducira **kwargs dice que acepte todos los parametros 
+ |safe dignifica en modo seguro con html
+
+-->
+
+{% macro render_field (field)%}
+
+    <dd>{{ field(**kwargs)|safe }}</dd>
+
+    {%if field.errors %}
+        <div class="text-danger text-center">
+            <ul>
+                {%for error in field.errors %}
+                
+                    <li>{{error}}</li>
+
+                {%endfor%}
+            </ul>
+        </div>
+
+    {%endif%}
+      
+{% endmacro %}
