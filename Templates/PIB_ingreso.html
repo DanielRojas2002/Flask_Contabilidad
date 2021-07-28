@@ -107,7 +107,7 @@
                             
                             {%for y in lista%}
                                 <tr>
-                                    <td>{{loop.index}}</td>
+                                    <td >{{loop.index}}</td>
                                     <td>{{y[1]}}</td>
                                     <td>{{y[2]}}</td>
                                     <td>{{y[3]}}</td>
@@ -116,10 +116,38 @@
                                     <td>{{y[6]}}</td>
                                     <td>{{y[7]}}</td>
                                     <td>{{y[8]}}</td>
-                                    
+
                                     <td>{{y[10]}}</td>
                                     <td>{{y[11]}}</td>
-                                    <td><a href="" class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a></td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <a class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a>
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">BORRAR REGISTRO</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>¿Estas seguro de borrar este registro?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <a href="{{url_for('obtenervalorborrar', id=y[0] )}}" class="btn btn-primary">Borrar Registro</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </td>
+                                    <!--<td><a href="{{url_for('obtenervalorborrar', id=y[0] )}}" class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a></td>-->
                                     
                                     
                                 </tr>

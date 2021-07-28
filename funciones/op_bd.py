@@ -50,6 +50,23 @@ def obtener_datos_PIB_gasto(correo):
     conexion.close()
     return listaProductos2
 
+def obtener_datos_por_id_ingreso(id):
+    conexion = conexionbd()
+    dato = None
+    with conexion.cursor() as cursor:
+        cursor.execute(
+            "SELECT id,impuestos_in,ingresos_P,intereses,depreciacion ,beneficios_corp,renta,renumeraciones,ingreso_neto,tiempo_C,re_ingreso_nacional,re_PIB FROM PIB_ingreso WHERE id = %s", (id,))
+        dato = cursor.fetchone()
+    conexion.close()
+    return dato
+
+def eliminar_registro_pib_ingreso(id):
+    conexion = conexionbd()
+    with conexion.cursor() as cursor:
+        cursor.execute(f"DELETE FROM PIB_ingreso WHERE id = {id}")
+    conexion.commit()
+    conexion.close()
+
 def actualizar_registro(nombre, descripcion, precio,cantidad,tiempo_M,estatus,fechafin,horasRestantes,id):
     conexion = conexionbd()
     
@@ -66,15 +83,7 @@ def eliminar_registro(id):
     conexion.commit()
     conexion.close()
 
-def obtener_datos_por_id(id):
-    conexion = conexionbd()
-    juego = None
-    with conexion.cursor() as cursor:
-        cursor.execute(
-            "SELECT id, nombre, descripcion, precio,cantidad,tiempo_C,tiempo_M,estatus,fechafin FROM Lista WHERE id = %s", (id,))
-        juego = cursor.fetchone()
-    conexion.close()
-    return juego
+
 
 
 

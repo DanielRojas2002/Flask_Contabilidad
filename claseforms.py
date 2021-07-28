@@ -49,6 +49,7 @@ class Crear_Usuario(Form):
     botonatras=SubmitField("ATRAS")
 
 class PIB_ingreso(Form):
+    id=IntegerField("ID")
     im_in=IntegerField("Impuestos Indirectos",validators=[DataRequired()])
     ig_p=IntegerField("Ingresos de los Propietarios",validators=[DataRequired()])
     intereses=IntegerField("Intereses",validators=[DataRequired()])
@@ -62,6 +63,7 @@ class PIB_ingreso(Form):
 
 
 class PIB_gasto(Form):
+    id=IntegerField("ID")
     II=IntegerField("Impuestos Indirectos",validators=[DataRequired()])
     INFEE=IntegerField("Ingreso neto de los factores extranjeros",validators=[DataRequired()])
     E=IntegerField("Exportaciones",validators=[DataRequired()])

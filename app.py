@@ -5,7 +5,7 @@ from config import Config
 from claseforms import Login,Crear_Usuario,PIB_ingreso,PIB_gasto
 
 from funciones.op_bd import CrearUsuario,Validar_Usuario,insertar_PIB_ingreso,obtener_datos_PIB_ingreso,insertar_PIB_gasto
-from funciones.op_bd import obtener_datos_PIB_gasto
+from funciones.op_bd import obtener_datos_PIB_gasto,obtener_datos_por_id_ingreso,eliminar_registro_pib_ingreso
 
 from funciones.clases import MetodoDelIngreso,MetodoDelGasto
 import datetime
@@ -114,6 +114,22 @@ def PIB_INGRESO():
         except:
             pass
     return render_template("PIB_ingreso.html",form=form ,calculo=lista , lista=valores)
+
+@app.route("/obtener_valor_id_b/<int:id>", methods=["GET","POST"])
+def obtenervalorborrar(id):
+    form=PIB_ingreso(request.form) 
+    if request.method=="POST":
+        id=session["id"]=form.id.data
+        print(id)
+    datoaborrar=obtener_datos_por_id_ingreso(id)
+    print(datoaborrar)
+    eliminar_registro_pib_ingreso(datoaborrar[0]) # Aqui me quede 
+    
+
+    return redirect(url_for('PIB_INGRESO'))
+   
+
+
 
 
 @app.route("/PIB_GASTO",methods=["GET","POST"])
