@@ -117,15 +117,9 @@ def PIB_INGRESO():
 
 @app.route("/obtener_valor_id_b/<int:id>", methods=["GET","POST"])
 def obtenervalorborrar(id):
-    form=PIB_ingreso(request.form) 
-    if request.method=="POST":
-        id=session["id"]=form.id.data
-        print(id)
-    datoaborrar=obtener_datos_por_id_ingreso(id)
-    print(datoaborrar)
-    eliminar_registro_pib_ingreso(datoaborrar[0]) # Aqui me quede 
+    print(id)
+    eliminar_registro_pib_ingreso(id) 
     
-
     return redirect(url_for('PIB_INGRESO'))
    
 
