@@ -5,7 +5,7 @@ from config import Config
 from claseforms import Login,Crear_Usuario,PIB_ingreso,PIB_gasto
 
 from funciones.op_bd import CrearUsuario,Validar_Usuario,insertar_PIB_ingreso,obtener_datos_PIB_ingreso,insertar_PIB_gasto
-from funciones.op_bd import obtener_datos_PIB_gasto,obtener_datos_por_id_ingreso,eliminar_registro_pib_ingreso
+from funciones.op_bd import obtener_datos_PIB_gasto,obtener_datos_por_id_ingreso,eliminar_registro_pib_ingreso,eliminar_registro_pib_gasto
 
 from funciones.clases import MetodoDelIngreso,MetodoDelGasto
 import datetime
@@ -116,12 +116,10 @@ def PIB_INGRESO():
     return render_template("PIB_ingreso.html",form=form ,calculo=lista , lista=valores)
 
 @app.route("/obtener_valor_id_b/<int:id>", methods=["GET","POST"])
-def obtenervalorborrar(id):
-    print(id)
+def obtenervalorborrarI(id):
     eliminar_registro_pib_ingreso(id) 
     
     return redirect(url_for('PIB_INGRESO'))
-   
 
 
 
@@ -163,7 +161,11 @@ def PIB_GASTO():
     return render_template("PIB_gasto.html",form=form ,calculo=lista , lista=valores)
 
 
-
+@app.route("/obtener_valor_id_bo/<int:id>", methods=["GET","POST"])
+def obtenervalorborrarG(id):
+    eliminar_registro_pib_gasto(id) 
+    
+    return redirect(url_for('PIB_GASTO'))
 
 
 

@@ -67,6 +67,13 @@ def eliminar_registro_pib_ingreso(id):
     conexion.commit()
     conexion.close()
 
+def eliminar_registro_pib_gasto(id):
+    conexion = conexionbd()
+    with conexion.cursor() as cursor:
+        cursor.execute(f"DELETE FROM PIB_gasto WHERE id = {id}")
+    conexion.commit()
+    conexion.close()
+
 def actualizar_registro(nombre, descripcion, precio,cantidad,tiempo_M,estatus,fechafin,horasRestantes,id):
     conexion = conexionbd()
     

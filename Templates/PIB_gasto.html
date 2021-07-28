@@ -97,8 +97,8 @@
                                 <th scope="col">CONSUMO_FAMILIAS</th>
                                 <th scope="col">PIB</th>
                                 <th scope="col">PIN</th>
-                                <th scope="col">INGRESO_NACIONAL</th>
-                                <th scope="col">ACCION</th>
+                                <th scope="col">IN</th>
+                                <th scope="col">-</th>
                                 
                             </tr>
                         </thead>
@@ -117,8 +117,11 @@
                                     <td>{{y[8]}}</td>
                                     <td>{{y[9]}}</td>
                                     <td>{{y[10]}}</td>
-                                    <td><a href="" class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a></td>
-                                    
+                            
+                                    <td>
+                                        <a href="{{url_for('obtenervalorborrarG', id=y[0] )}}" class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a>
+                                                    
+                                    </td>
                                     
                                     
                                     
