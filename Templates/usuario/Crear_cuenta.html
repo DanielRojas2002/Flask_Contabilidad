@@ -46,7 +46,7 @@
 
                 <div class=" col-12 col-lg-4 ">
                     <div class="card w-100">
-                        {% from "_macro.html" import render_field %}
+                        {% from "funciones/_macro.html" import render_field %}
                         
                         <div class="card-body text-dark border border-dark rounded mp-2 boton ">
                             <a href="{{url_for('login')}}">{{render_field (form.botonatras, type="submit" ,class="btn btn-secondary w-100 rounded-pill")}}</a>

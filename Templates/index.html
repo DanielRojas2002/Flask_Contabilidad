@@ -11,59 +11,42 @@
     <body class="main">
         <nav class="navbar navbar-expand-lg navbar-light barra url ">
             <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">EJEMPLOS--></span>
+                <span class="navbar-brand mb-0 h1">BIENVENDIDO</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
                 
               
-              <div class="collapse navbar-collapse d-lg-flex justify-content-around" id="navbarSupportedContent">
+              <div class="collapse navbar-collapse d-lg-flex justify-content-start " id="navbarSupportedContent">
                     <ul class="navbar-nav  ">
+
+                       
                         <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">POLIZA DE DIARIO</a>
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">SIGNIFICADOS Y EJEMPLOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">ESTADO FINANCIERO</a>
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">¿QUIEN SOY?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">UTILIDAD</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">NOMINA </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">ANALISIS DE VARIABLES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active rounded-pill" aria-current="page" href="#">PROGRATEOS 1 Y 2</a>
+                            <a class="nav-link active rounded-pill" aria-current="page" href="#">CONTACTAME</a>
                         </li>
                         
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">COSTOS</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="Login.html">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">MAS</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="Login.html">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <div class="container-fluid">
-                                <a href="{{url_for('login')}}" class="navbar-text font-weight-bold text-dark btn bo w-100 rounded-pill" >SALIR</a>
-                            </div>
-
-                        </li>
+                       
+                        
                     </ul>
                </div>
+               <div class="collapse navbar-collapse d-lg-flex justify-content-end " id="navbarSupportedContent">
+                    <ul class="navbar-nav  ">
+                        <li class="nav-item ">
+                            
+                            <a href="{{url_for('login')}}" class="navbar-text font-weight-bold text-dark btn bo w-100 rounded-pill" >SALIR</a>
+                            
+                        </li>
+                    </ul>
+                </div>
+
+            
 
                     
 
