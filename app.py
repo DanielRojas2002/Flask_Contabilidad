@@ -49,7 +49,7 @@ def login():
             flash(message)
 
 
-    return render_template("login.html",form=form,status=po)
+    return render_template("usuario/login.html",form=form,status=po)
 
 
 @app.route("/Crear_Cuenta",methods=["GET","POST"])
@@ -71,14 +71,14 @@ def create():
 
         finally:
             flash(message)
-    return render_template("Crear_cuenta.html",form=form,status=po) 
+    return render_template("usuario/Crear_cuenta.html",form=form,status=po) 
 
 
 @app.route("/Menu_Principal")
 def MENU():
     global lista
     lista=[]
-    return render_template("menu.html")
+    return render_template("index.html")
 
 
 @app.route("/PIB_INGRESO", methods=["GET", "POST"])
@@ -113,7 +113,7 @@ def PIB_INGRESO():
             valores=obtener_datos_PIB_ingreso(email)
         except:
             pass
-    return render_template("PIB_ingreso.html",form=form ,calculo=lista , lista=valores)
+    return render_template("procesos/PIB_ingreso.html",form=form ,calculo=lista , lista=valores)
 
 @app.route("/obtener_valor_id_b/<int:id>", methods=["GET","POST"])
 def obtenervalorborrarI(id):
@@ -158,7 +158,7 @@ def PIB_GASTO():
         except:
             pass
         
-    return render_template("PIB_gasto.html",form=form ,calculo=lista , lista=valores)
+    return render_template("procesos/PIB_gasto.html",form=form ,calculo=lista , lista=valores)
 
 
 @app.route("/obtener_valor_id_bo/<int:id>", methods=["GET","POST"])
