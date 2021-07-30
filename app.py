@@ -2,15 +2,28 @@ from flask import Flask,request,render_template,flash,session
 from flask import url_for,redirect
 from flask_wtf import CSRFProtect
 from config import Config
-from claseforms import Login,Crear_Usuario,PIB_ingreso,PIB_gasto
 
-from funciones.op_bd import CrearUsuario,Validar_Usuario,insertar_PIB_ingreso,obtener_datos_PIB_ingreso,insertar_PIB_gasto
-from funciones.op_bd import obtener_datos_PIB_gasto,obtener_datos_por_id_ingreso,eliminar_registro_pib_ingreso,eliminar_registro_pib_gasto
+# IMPORTACION DE FORMS (usuario)
+from claseforms import Login,Crear_Usuario
 
+# IMPORTACION DE FORMS DE PIBS
+from claseforms import PIB_ingreso,PIB_gasto
+
+# IMPORTACIONES DE LA CONEXION CON LA BASE DE DATOS
+
+        # IMPORTACION DE FUNCIONES DE USUARIO
+from funciones.op_bd import CrearUsuario,Validar_Usuario
+
+        # IMPORTACION DE FUNCIONES DE PIBS 
+from funciones.op_bd import insertar_PIB_ingreso,obtener_datos_PIB_ingreso
+from funciones.op_bd import insertar_PIB_gasto,obtener_datos_PIB_gasto
+from funciones.op_bd import eliminar_registro_pib_ingreso,eliminar_registro_pib_gasto
+
+    # IMPORTACION DE CLASES DE PIBS PARA CALCULAR EL PIB DE LOS DOS METODOS
 from funciones.clases import MetodoDelIngreso,MetodoDelGasto
 import datetime
 
-
+# variables globales 
 correo=""
 po=""
 lista=[]
@@ -51,7 +64,7 @@ def login():
 
     return render_template("usuario/login.html",form=form,status=po)
 
-
+# CREAR USUARIO 
 @app.route("/Crear_Cuenta",methods=["GET","POST"])
 def create():
     form=Crear_Usuario(request.form) 
@@ -73,14 +86,14 @@ def create():
             flash(message)
     return render_template("usuario/Crear_cuenta.html",form=form,status=po) 
 
-
+# MENU PRINCIPAL
 @app.route("/Menu_Principal")
 def MENU():
     global lista
     lista=[]
     return render_template("index.html")
 
-
+# PIB POR EL METODO DEL INGRESO
 @app.route("/PIB_INGRESO", methods=["GET", "POST"])
 def PIB_INGRESO():
     global correo
@@ -115,15 +128,15 @@ def PIB_INGRESO():
             pass
     return render_template("procesos/PIB_ingreso.html",form=form ,calculo=lista , lista=valores)
 
+
+# ELIMINACION  POR ID DEL METODO DEL INGRESO
 @app.route("/obtener_valor_id_b/<int:id>", methods=["GET","POST"])
 def obtenervalorborrarI(id):
     eliminar_registro_pib_ingreso(id) 
     
     return redirect(url_for('PIB_INGRESO'))
 
-
-
-
+# PIB POR EL METODO DEL GASTO 
 @app.route("/PIB_GASTO",methods=["GET","POST"])
 def PIB_GASTO():
     global correo
@@ -161,6 +174,7 @@ def PIB_GASTO():
     return render_template("procesos/PIB_gasto.html",form=form ,calculo=lista , lista=valores)
 
 
+# ELIMINACION POR ID DEL METODO DEL GASTO 
 @app.route("/obtener_valor_id_bo/<int:id>", methods=["GET","POST"])
 def obtenervalorborrarG(id):
     eliminar_registro_pib_gasto(id) 
@@ -168,7 +182,7 @@ def obtenervalorborrarG(id):
     return redirect(url_for('PIB_GASTO'))
 
 
-
+#INICIALIZACION DE LA APLICACION
 if __name__=="__main__":
     csrf.init_app(app)
     app.run(debug=True,port=5000)

@@ -1,10 +1,12 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField,TextField,PasswordField,SubmitField,IntegerField,DateTimeField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired,length
 from wtforms import validators
 
-class Login(Form):
+#FORMS
+#CLASE DEL LOGIN (INGRESAR CON EL USUARIO YA EXISTENTE)
+class Login(FlaskForm):
     email = EmailField(
         'Correo electronico',
         [
@@ -26,7 +28,8 @@ class Login(Form):
     botonLog=SubmitField("INGRESAR")
 
 
-class Crear_Usuario(Form):
+#CLASE DEL LOGIN (CREAR USUARIO )
+class Crear_Usuario(FlaskForm):
     email = EmailField(
         'Correo electronico',
         [
@@ -48,7 +51,8 @@ class Crear_Usuario(Form):
     botoncrearU=SubmitField("CREAR")
     botonatras=SubmitField("ATRAS")
 
-class PIB_ingreso(Form):
+# CLASE DEL PIB INGRESO
+class PIB_ingreso(FlaskForm):
     id=IntegerField("ID")
     im_in=IntegerField("Impuestos Indirectos",validators=[DataRequired()])
     ig_p=IntegerField("Ingresos de los Propietarios",validators=[DataRequired()])
@@ -61,8 +65,8 @@ class PIB_ingreso(Form):
 
     botoncalcular=SubmitField("CALCULAR")
 
-
-class PIB_gasto(Form):
+#CLASE DEL PIB GASTO
+class PIB_gasto(FlaskForm):
     id=IntegerField("ID")
     II=IntegerField("Impuestos Indirectos",validators=[DataRequired()])
     INFEE=IntegerField("Ingreso neto de los factores extranjeros",validators=[DataRequired()])
