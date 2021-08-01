@@ -59,10 +59,11 @@
                     <div class="card-body text-dark border border-dark rounded ">
                         <h5 class="card-title text-center">RESPUESTAS</h5>
                         <p class="card-text border text-center">Aqui se ingresaran las Respuesta cuando haga la Operacion</p>
-                        {%for pib,ingreso,i_n in calculo%}
-                            <p> El PIB es : {{pib}}</p>
-                            <p> El Producto Ingreso Nacional es: {{ingreso}}</p>
-                            <p> El Ingreso Nacional es : {{i_n}}</p>
+                        {%for r_venta,r_costo,r_margen,r_utilidad in calculo%}
+                            <p> Las Ventas son : {{r_venta}}</p>
+                            <p> El Costo Variable es: {{r_costo}}</p>
+                            <p> El Margen de Contribucion es : {{r_margen}}</p>
+                            <p> La Utilidad es : {{r_utilidad}}</p>
                         {%endfor%}                             
                     </div>
                 </div>
@@ -76,16 +77,13 @@
                         <thead>
                             <tr class="table-dark">
                                 <th scope="col">ID</th>
-                                <th scope="col">IMPUESTO_INDIRECTO</th>
-                                <th scope="col">INGRESO_NETO</th>
-                                <th scope="col">EXPORTACIONES</th>
-                                <th scope="col">DEPRECIACION</th>
-                                <th scope="col">IMPORTACIONES</th>
-                                <th scope="col">GASTO_GOBIERNO</th>
-                                <th scope="col">CONSUMO_FAMILIAS</th>
-                                <th scope="col">PIB</th>
-                                <th scope="col">PIN</th>
-                                <th scope="col">IN</th>
+                                <th scope="col">PRECIO_VENTA</th>
+                                <th scope="col">COSTO_VARIABLE</th>
+                                <th scope="col">COSTO_FIJO</th>
+                                <th scope="col">VENTA</th>
+                                <th scope="col">MARGEN</th>
+                                <th scope="col">R_COSTO_VARIABLE</th>
+                                <th scope="col">UTILIDAD</th>
                                 <th scope="col">-</th>
                                 
                             </tr>
@@ -97,14 +95,13 @@
                                     <td>{{loop.index}}</td>
                                     <td>{{y[1]}}</td>
                                     <td>{{y[2]}}</td>
-                                    <td>{{y[3]}}</td>
+                                    <td>{{y[3]}}</td> 
                                     <td>{{y[4]}}</td>
                                     <td>{{y[5]}}</td>
                                     <td>{{y[6]}}</td>
                                     <td>{{y[7]}}</td>
                                     <td>{{y[8]}}</td>
-                                    <td>{{y[9]}}</td>
-                                    <td>{{y[10]}}</td>
+                                   
                             
                                     <td>
                                         <a href="{{url_for('obtenervalorborrarG', id=y[0] )}}" class="text-decoration-none"><i class="bi bi-trash" style="color: #DC3545;"></i></a>

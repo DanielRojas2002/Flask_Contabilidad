@@ -3,6 +3,7 @@ from flask import url_for,redirect
 from flask_wtf import CSRFProtect
 from config import Config
 
+#PIBS
 # IMPORTACION DE FORMS (usuario)
 from claseforms import Login,Crear_Usuario
 
@@ -21,6 +22,15 @@ from funciones.op_bd import eliminar_registro_pib_ingreso,eliminar_registro_pib_
 
     # IMPORTACION DE CLASES DE PIBS PARA CALCULAR EL PIB DE LOS DOS METODOS
 from funciones.clases import MetodoDelIngreso,MetodoDelGasto
+
+#UTILIDAD
+#IMPORTACION DE FORM Utilidad
+from claseforms import Utilidad
+#IMPORTACION DE FUNCIONES DE UTILIDAD
+from funciones.op_bd import obtener_datos_Utilidad,insertar_Utilidad
+#IMPORTACION DE CLASE DE UTILIDAD PARA CALCULAR LA UTILIDAD 
+from funciones.clases import Equilibrio
+
 import datetime
 
 # variables globales 
@@ -167,7 +177,7 @@ def PIB_GASTO():
             
             insertar_PIB_gasto(impuestos_indirectos,ingresos_neto,exportaciones,depreciacion,importaciones,gasto_gobierno,consumo_familias,tiempo_C,pib,pin,INE,email)
             valores=obtener_datos_PIB_gasto(email)
-            print(valores)
+            
         except:
             pass
         
@@ -180,6 +190,40 @@ def obtenervalorborrarG(id):
     eliminar_registro_pib_gasto(id) 
     
     return redirect(url_for('PIB_GASTO'))
+
+
+@app.route("/Utilidad", methods=["GET","POST"])
+def UTILIDAD():
+    global correo
+    global valores
+    email=correo
+    global lista
+    lista=[]
+    form=Utilidad(request.form)
+    valores=obtener_datos_Utilidad(email)
+    if request.method=="POST" and form.validate_on_submit():
+        precio_venta =session["P"]=form.P.data
+        costo_variable=session["CV"]=form.CV.data
+        costo_fijo=session["CF"]=form.CF.data
+        tiempo_C=datetime.datetime.now()
+
+        try:
+            calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
+            lista=[calculo]
+            r_venta=calculo[0]
+            r_costo_variable=calculo[1]
+            r_margen=calculo[2]
+            r_utilidad=calculo[3]
+
+            insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
+            valores=obtener_datos_Utilidad(email)
+        except:
+            pass
+
+    return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores)
+
+        
+
 
 
 #INICIALIZACION DE LA APLICACION
