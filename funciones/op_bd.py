@@ -92,6 +92,13 @@ def obtener_datos_Utilidad(correo):
 
     conexion.close()
     return listaProductos2
+
+def eliminar_registro_utilidad(id):
+    conexion = conexionbd()
+    with conexion.cursor() as cursor:
+        cursor.execute(f"DELETE FROM Utilidad WHERE id = {id}")
+    conexion.commit()
+    conexion.close()
 # Fin Utilidad
 
 
