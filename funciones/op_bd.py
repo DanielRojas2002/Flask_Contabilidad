@@ -1,7 +1,7 @@
 from .conexion import  conexionbd
 import datetime
 
-
+# PIBS
 def insertar_PIB_ingreso(impuesto_indirectos, ingresos_propietarios,intereses,depreciacion,beneficios_corporativos,renta,renumeraciones,ingreso_neto,tiempo_Creacion,re_ingreso_nacional,re_PIB ,email):
     conexion = conexionbd()
     with conexion.cursor() as cursor:
@@ -66,18 +66,33 @@ def eliminar_registro_pib_gasto(id):
     conexion.commit()
     conexion.close()
 
-def actualizar_registro(nombre, descripcion, precio,cantidad,tiempo_M,estatus,fechafin,horasRestantes,id):
+# FIN PIBS
+#Utilidad
+def insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_costo_fijos,r_utilidad,correo):
     conexion = conexionbd()
-    
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE Lista SET nombre = %s, descripcion = %s, precio = %s , cantidad=%s ,tiempo_M=%s , estatus=%s, fechafin=%s ,horasRestantes=%s WHERE id = %s",
-                       (nombre, descripcion, precio, cantidad,tiempo_M,estatus,fechafin,horasRestantes,id))
+        cursor.execute("INSERT INTO Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_costo_fijos,r_utilidad,correo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                       (precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_costo_fijos,r_utilidad,correo))
     conexion.commit()
     conexion.close()
 
 
+def obtener_datos_Utilidad(correo):
+    conexion = conexionbd()
+    productos = []
+    listaProductos2=[]
+    with conexion.cursor() as cursor:
+        
+        cursor.execute("SELECT id,precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_costo_fijos,r_utilidad FROM Utilidad WHERE correo = %s", (correo,))
+        productos = cursor.fetchall()
 
+        for id,p,cv,cf,rv,rc,rm,rcf,ru in productos:
+            tupla=(id,p,cv,cf,rv,rc,rm,rcf,ru)
+            listaProductos2.append(tupla)
 
+    conexion.close()
+    return listaProductos2
+# Fin Utilidad
 
 
 def CrearUsuario(correo,contraseña):
