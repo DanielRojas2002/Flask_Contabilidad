@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt 
+import sys
+import datetime
+
 class MetodoDelIngreso:
     def __init__ (self,II,IP,IN,D,BC,R,RT,INFE):
         self.__II=II
@@ -52,3 +56,64 @@ class MetodoDelGasto():
         IN=(PIN-self.__INFEE-self.__ID)
         lista=[pib,PIN,IN]
         return lista
+
+
+
+
+class Equilibrio ():
+    def __init__(self,p,cv,cf):
+        self.__p=p
+        self.__cv=cv
+        self.__cf=cf
+        
+    
+    def proceso(self):
+        
+        equilibrio=(cf/(p-cv))
+        #print(f"Estas son las unidades que tienes que vender para tener un Equilibrio (Ni ganancia , Ni perdida): {equilibrio} ")
+        #print(separador)
+        It=(equilibrio*self.__p)
+        costoV=(equilibrio*self.__cv)
+        margenC=(It-costoV)
+        utilidad=(margenC-self.__cf)
+        
+       
+        
+       # print(f"Ventas: {It}")
+        #print(f"(-)Costo Variable : {costoV}")
+        #print(f"(=)Margen de Contribucion : {margenC}")
+        #print(f"(-)Costos Fijos : {self.__cf}")
+        #print(f"Utilidad,Perdida o punto de equilibrio : {utilidad}")
+      
+        x=[0,equilibrio]
+        y=[0,It]
+        plt.plot(x,y,"r")
+        plt.plot(It,label=r"$IT$",color="r")
+        x1=[0,equilibrio]
+        y2=[self.__cf,It]
+        plt.plot(x1,y2,"g")
+        plt.plot(costoV,label=r"$CT$",color="g")
+        plt.grid(True)
+
+        plt.plot(self.__cf,label=r"$Costo Fijo$",color="k")
+        plt.axhline(self.__cf,color="k",lw=2)
+        
+        plt.legend(loc=4)
+        plt.xlabel("Unidades")
+        plt.ylabel("$ DINERO")
+        plt.title("Grafica de Punto de Equilibrio")
+       
+        
+        plt.text(equilibrio,It,". Equilibrio",rotation=45)
+        plt.show()
+      
+
+
+p=float(input("Dime el Precio de Venta Unitario : "))
+cv=float(input("Dime el Costo Variable por unidad : "))
+cf=float(input("Dime los Costos Fijos Totales : "))
+        
+        
+objeto1=Equilibrio(p,cv,cf)
+objeto1.proceso()
+

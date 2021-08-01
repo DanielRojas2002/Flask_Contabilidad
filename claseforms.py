@@ -78,5 +78,11 @@ class PIB_gasto(FlaskForm):
 
     botoncalcular=SubmitField("CALCULAR")
 
+class Utilidad(FlaskForm):
+    P=IntegerField("Precio de Venta Unitario",validators=[DataRequired()])
+    CV=IntegerField("Costo Variable por unidad",validators=[DataRequired()])
+    CF=IntegerField("Costos Fijos Totales",validators=[DataRequired()])
+
+    botoncalcular=SubmitField("CALCULAR")
 
 
