@@ -68,11 +68,11 @@ def eliminar_registro_pib_gasto(id):
 
 # FIN PIBS
 #Utilidad
-def insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo):
+def insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo):
     conexion = conexionbd()
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                       (precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo))
+        cursor.execute("INSERT INTO Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                       (precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,correo))
     conexion.commit()
     conexion.close()
 
@@ -83,11 +83,11 @@ def obtener_datos_Utilidad(correo):
     listaProductos2=[]
     with conexion.cursor() as cursor:
         
-        cursor.execute("SELECT id,precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad FROM Utilidad WHERE correo = %s", (correo,))
+        cursor.execute("SELECT id,precio_venta,costo_variable,costo_fijo,r_equilibrio ,r_venta,r_costo_variable,r_margen,r_utilidad FROM Utilidad WHERE correo = %s", (correo,))
         productos = cursor.fetchall()
 
-        for id,p,cv,cf,rv,rc,rm,ru in productos:
-            tupla=(id,p,cv,cf,rv,rc,rm,ru)
+        for id,p,cv,cf,re,rv,rc,rm,ru in productos:
+            tupla=(id,p,cv,cf,re,rv,rc,rm,ru)
             listaProductos2.append(tupla)
 
     conexion.close()

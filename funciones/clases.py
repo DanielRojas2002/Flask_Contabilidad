@@ -60,7 +60,7 @@ class MetodoDelGasto():
 
 
 
-class Equilibrio ():
+class Equilibrio():
     def __init__(self,p,cv,cf):
         self.__p=p
         self.__cv=cv

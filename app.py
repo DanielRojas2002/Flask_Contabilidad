@@ -27,7 +27,7 @@ from funciones.clases import MetodoDelIngreso,MetodoDelGasto
 #IMPORTACION DE FORM Utilidad
 from claseforms import Utilidad
 #IMPORTACION DE FUNCIONES DE UTILIDAD
-from funciones.op_bd import obtener_datos_Utilidad,insertar_Utilidad
+from funciones.op_bd import obtener_datos_Utilidad,insertar_Utilidad,eliminar_registro_utilidad
 #IMPORTACION DE CLASE DE UTILIDAD PARA CALCULAR LA UTILIDAD 
 from funciones.clases import Equilibrio
 
@@ -207,22 +207,27 @@ def UTILIDAD():
         costo_fijo=session["CF"]=form.CF.data
         tiempo_C=datetime.datetime.now()
 
-        try:
-            calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
-            lista=[calculo]
-            r_venta=calculo[0]
-            r_costo_variable=calculo[1]
-            r_margen=calculo[2]
-            r_utilidad=calculo[3]
+        
+        calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
+        print(calculo)
+        lista=[calculo]
+        r_equilibrio =calculo[0]
+        r_venta=calculo[1]
+        r_costo_variable=calculo[2]
+        r_margen=calculo[3]
+        r_utilidad=calculo[4]
 
-            insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
-            valores=obtener_datos_Utilidad(email)
-        except:
-            pass
+        insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
+        valores=obtener_datos_Utilidad(email)
+        
 
     return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores)
 
-        
+@app.route("/obtener_valor_id_bor/<int:id>", methods=["GET","POST"])
+def obtenervalorborrarU(id):
+    eliminar_registro_utilidad(id) 
+    
+    return redirect(url_for('UTILIDAD'))    
 
 
 
