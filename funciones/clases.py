@@ -70,18 +70,12 @@ class Equilibrio():
     def proceso(self):
         lista=[]
         equilibrio=(self.__cf/(self.__p-self.__cv))
-        #print(f"Estas son las unidades que tienes que vender para tener un Equilibrio (Ni ganancia , Ni perdida): {equilibrio} ")
-        #print(separador)
         It=(equilibrio*self.__p)
         costoV=(equilibrio*self.__cv)
         margenC=(It-costoV)
         utilidad=(margenC-self.__cf)
         lista=[equilibrio,It,costoV,margenC,utilidad]
-        # print(f"Ventas: {It}")
-        #print(f"(-)Costo Variable : {costoV}")
-        #print(f"(=)Margen de Contribucion : {margenC}")
-        #print(f"(-)Costos Fijos : {self.__cf}")
-        #print(f"Utilidad,Perdida o punto de equilibrio : {utilidad}")
+        
         return lista
 
         

@@ -207,18 +207,21 @@ def UTILIDAD():
         costo_fijo=session["CF"]=form.CF.data
         tiempo_C=datetime.datetime.now()
 
-        
-        calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
-        print(calculo)
-        lista=[calculo]
-        r_equilibrio =calculo[0]
-        r_venta=calculo[1]
-        r_costo_variable=calculo[2]
-        r_margen=calculo[3]
-        r_utilidad=calculo[4]
+        try:
+            calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
+            print(calculo)
+            lista=[calculo]
+            r_equilibrio =calculo[0]
+            r_venta=calculo[1]
+            r_costo_variable=calculo[2]
+            r_margen=calculo[3]
+            r_utilidad=calculo[4]
 
-        insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
-        valores=obtener_datos_Utilidad(email)
+            insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
+            valores=obtener_datos_Utilidad(email)
+        except:
+            pass
+        
         
 
     return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores)
