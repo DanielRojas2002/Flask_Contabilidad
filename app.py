@@ -1,6 +1,7 @@
 from flask import Flask,request,render_template,flash,session
 from flask import url_for,redirect
 from flask_wtf import CSRFProtect
+from flask import Response
 from config import Config
 
 #PIBS
@@ -33,11 +34,16 @@ from funciones.clases import Equilibrio
 
 import datetime
 
+# decodigo.com
+import os
+
+
 # variables globales 
 correo=""
 po=""
 lista=[]
 valores=""
+grafica=""
 app=Flask(__name__,template_folder="Templates")
 
 app.config.from_object(Config)
@@ -99,8 +105,16 @@ def create():
 # MENU PRINCIPAL
 @app.route("/Menu_Principal")
 def MENU():
+    global correo
     global lista
     lista=[]
+    # Se define el nombre de la carpeta o directorio a crear
+    directorio = "static/graficas/"+correo
+    try:
+        os.mkdir(directorio)
+    except OSError:
+        pass
+    
     return render_template("index.html")
 
 # PIB POR EL METODO DEL INGRESO
@@ -198,6 +212,8 @@ def UTILIDAD():
     global valores
     email=correo
     global lista
+    global grafica
+    grafica=""
     lista=[]
     form=Utilidad(request.form)
     valores=obtener_datos_Utilidad(email)
@@ -207,24 +223,25 @@ def UTILIDAD():
         costo_fijo=session["CF"]=form.CF.data
         tiempo_C=datetime.datetime.now()
 
-        try:
-            calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
-            print(calculo)
-            lista=[calculo]
-            r_equilibrio =calculo[0]
-            r_venta=calculo[1]
-            r_costo_variable=calculo[2]
-            r_margen=calculo[3]
-            r_utilidad=calculo[4]
-
-            insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
-            valores=obtener_datos_Utilidad(email)
-        except:
-            pass
         
+        calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
+        
+        lista=calculo
+        r_equilibrio =calculo[0]
+        r_venta=calculo[1]
+        r_costo_variable=calculo[2]
+        r_margen=calculo[3]
+        r_utilidad=calculo[4]
+
+        insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
+        valores=obtener_datos_Utilidad(email)
+
+        grafica=Equilibrio(precio_venta,costo_variable,costo_fijo).graficar(lista,email)
+        print(grafica)
+
         
 
-    return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores)
+    return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores, url=grafica)
 
 @app.route("/obtener_valor_id_bor/<int:id>", methods=["GET","POST"])
 def obtenervalorborrarU(id):

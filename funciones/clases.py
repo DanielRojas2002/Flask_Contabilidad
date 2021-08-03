@@ -79,35 +79,40 @@ class Equilibrio():
         return lista
 
         
-    def graficar(self,lista):
+    def graficar(self,lista,correo):
         equilibrio=lista[0]
         It=lista[1]
         costoV=lista[2]
         margenC=lista[3]
         utilidad=lista[4]
-        '''
-            x=[0,equilibrio]
-            y=[0,It]
-            plt.plot(x,y,"r")
-            plt.plot(It,label=r"$IT$",color="r")
-            x1=[0,equilibrio]
-            y2=[self.__cf,It]
-            plt.plot(x1,y2,"g")
-            plt.plot(costoV,label=r"$CT$",color="g")
-            plt.grid(True)
-
-            plt.plot(self.__cf,label=r"$Costo Fijo$",color="k")
-            plt.axhline(self.__cf,color="k",lw=2)
-            
-            plt.legend(loc=4)
-            plt.xlabel("Unidades")
-            plt.ylabel("$ DINERO")
-            plt.title("Grafica de Punto de Equilibrio")
         
-            
-            plt.text(equilibrio,It,". Equilibrio",rotation=45)
-            plt.show()
-        '''
+       
+        x=[0,equilibrio]
+        y=[0,It]
+        plt.plot(x,y,"r")
+        plt.plot(It,label=r"$IT$",color="r")
+        x1=[0,equilibrio]
+        y2=[self.__cf,It]
+        plt.plot(x1,y2,"g")
+        plt.plot(costoV,label=r"$CT$",color="g")
+        plt.grid(True)
+
+        plt.plot(self.__cf,label=r"$Costo Fijo$",color="k")
+        plt.axhline(self.__cf,color="k",lw=2)
+        
+        plt.legend(loc=4)
+        plt.xlabel("Unidades")
+        plt.ylabel("$ DINERO")
+        plt.title("Grafica de Punto de Equilibrio")
+    
+        
+        plt.text(equilibrio,It,". Equilibrio",rotation=45)
+        plt.savefig('static/graficas/'+correo+"/plot.png")
+        url='static/graficas/'+correo+"/plot.png"
+        
+
+        return url
+        
 
 
 
