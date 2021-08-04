@@ -61,7 +61,7 @@ class MetodoDelGasto():
 
 
 class Equilibrio():
-    def __init__(self,p,cv,cf):
+    def __init__(self,p="",cv="",cf=""):
         self.__p=p
         self.__cv=cv
         self.__cf=cf
@@ -107,11 +107,12 @@ class Equilibrio():
     
         
         plt.text(equilibrio,It,". Equilibrio",rotation=45)
-        plt.savefig('static/graficas/'+correo+"/plot.png")
-        url='static/graficas/'+correo+"/plot.png"
+        plt.show()
+        #plt.savefig('static/graficas/'+correo+"/plot.png")
+        #url='static/graficas/'+correo+"/plot.png"
         
 
-        return url
+        #return url
         
 
 

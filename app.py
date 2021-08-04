@@ -42,6 +42,7 @@ import os
 correo=""
 po=""
 lista=[]
+lista2=[]
 valores=""
 grafica=""
 app=Flask(__name__,template_folder="Templates")
@@ -212,6 +213,8 @@ def UTILIDAD():
     global valores
     email=correo
     global lista
+    global lista2
+    lista2=[]
     global grafica
     grafica=""
     lista=[]
@@ -227,6 +230,7 @@ def UTILIDAD():
         calculo=Equilibrio(precio_venta,costo_variable,costo_fijo).proceso()
         
         lista=calculo
+        lista2=[calculo]
         r_equilibrio =calculo[0]
         r_venta=calculo[1]
         r_costo_variable=calculo[2]
@@ -236,12 +240,22 @@ def UTILIDAD():
         insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
         valores=obtener_datos_Utilidad(email)
 
-        grafica=Equilibrio(precio_venta,costo_variable,costo_fijo).graficar(lista,email)
-        print(grafica)
+    return render_template("procesos/Utilidad.html",form=form ,calculo=lista2 , lista=valores )
 
-        
 
-    return render_template("procesos/Utilidad.html",form=form ,calculo=lista , lista=valores, url=grafica)
+@app.route("/ver_grafica/<lista>", methods=["GET","POST"])
+def graficas(lista):
+    print(lista)
+    global correo
+    email=correo
+
+
+    grafica=Equilibrio().graficar(lista,email)
+    
+
+    return redirect(url_for('UTILIDAD')) 
+
+
 
 @app.route("/obtener_valor_id_bor/<int:id>", methods=["GET","POST"])
 def obtenervalorborrarU(id):

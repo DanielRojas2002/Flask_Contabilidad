@@ -85,4 +85,3 @@ class Utilidad(FlaskForm):
 
     botoncalcular=SubmitField("CALCULAR")
 
-
