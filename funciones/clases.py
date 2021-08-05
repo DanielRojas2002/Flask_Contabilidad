@@ -107,12 +107,12 @@ class Equilibrio():
     
         
         plt.text(equilibrio,It,". Equilibrio",rotation=45)
-        plt.show()
-        #plt.savefig('static/graficas/'+correo+"/plot.png")
-        #url='static/graficas/'+correo+"/plot.png"
+        
+        plt.savefig('static/graficas/'+correo+"/plot.png")
+        url='static/graficas/'+correo+"/plot.png"
         
 
-        #return url
+        return url
         
 
 

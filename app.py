@@ -253,7 +253,7 @@ def graficas(lista):
     grafica=Equilibrio().graficar(lista,email)
     
 
-    return redirect(url_for('UTILIDAD')) 
+    return render_template("procesos/utilidad_grafica.html",url=grafica)
 
 
 
