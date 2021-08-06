@@ -61,7 +61,7 @@ class MetodoDelGasto():
 
 
 class Equilibrio():
-    def __init__(self,p="",cv="",cf=""):
+    def __init__(self,p,cv,cf):
         self.__p=p
         self.__cv=cv
         self.__cf=cf
@@ -69,11 +69,13 @@ class Equilibrio():
     
     def proceso(self):
         lista=[]
+        
         equilibrio=(self.__cf/(self.__p-self.__cv))
         It=(equilibrio*self.__p)
         costoV=(equilibrio*self.__cv)
         margenC=(It-costoV)
         utilidad=(margenC-self.__cf)
+        
         lista=[equilibrio,It,costoV,margenC,utilidad]
         
         return lista
@@ -83,16 +85,16 @@ class Equilibrio():
         equilibrio=lista[0]
         It=lista[1]
         costoV=lista[2]
-        margenC=lista[3]
-        utilidad=lista[4]
-        
-       
+      
         x=[0,equilibrio]
         y=[0,It]
+
         plt.plot(x,y,"r")
         plt.plot(It,label=r"$IT$",color="r")
+
         x1=[0,equilibrio]
         y2=[self.__cf,It]
+
         plt.plot(x1,y2,"g")
         plt.plot(costoV,label=r"$CT$",color="g")
         plt.grid(True)
@@ -104,11 +106,12 @@ class Equilibrio():
         plt.xlabel("Unidades")
         plt.ylabel("$ DINERO")
         plt.title("Grafica de Punto de Equilibrio")
-    
         
         plt.text(equilibrio,It,". Equilibrio",rotation=45)
         
+        
         plt.savefig('static/graficas/'+correo+"/plot.png")
+        
         url='static/graficas/'+correo+"/plot.png"
         
 
@@ -116,5 +119,4 @@ class Equilibrio():
         
 
 
-
-
+        

@@ -240,20 +240,12 @@ def UTILIDAD():
         insertar_Utilidad(precio_venta,costo_variable,costo_fijo,r_equilibrio,r_venta,r_costo_variable,r_margen,r_utilidad,tiempo_C,email)
         valores=obtener_datos_Utilidad(email)
 
-    return render_template("procesos/Utilidad.html",form=form ,calculo=lista2 , lista=valores )
+        grafica=Equilibrio(precio_venta,costo_variable,costo_fijo).graficar(lista,email)
+
+    return render_template("procesos/Utilidad.html",form=form ,calculo=lista2 ,url=grafica,lista=valores )
 
 
-@app.route("/ver_grafica/<lista>", methods=["GET","POST"])
-def graficas(lista):
-    print(lista)
-    global correo
-    email=correo
 
-
-    grafica=Equilibrio().graficar(lista,email)
-    
-
-    return render_template("procesos/utilidad_grafica.html",url=grafica)
 
 
 

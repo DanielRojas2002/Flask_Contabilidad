@@ -14,7 +14,7 @@
     <main class="container-fluid botonsecundario ">
         <div class="row bo text-center   barra url ">
             <div class="col-12 col-lg-12">
-                <h1 >UTILIDAD</h1>
+                <h1 >Punto de Equlibrio</h1>
 
             </div>
             <div class="col-12 col-lg-12 navbar navbar-light barra">
@@ -31,7 +31,7 @@
                 <div class="card w-100 ">
                     <div class="card-body text-dark border border-dark rounded ">
                         <h5 class="card-title text-center">INGRESE LOS DATOS</h5>
-                        <p class="card-text border text-center">Ingrese sus datos para poder calcular el PIB </p>
+                        <p class="card-text border text-center">Ingrese sus datos para poder calcular el Punto de Equilibrio </p>
                         <form class="text-form"  method="POST">
                             <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
                             
@@ -61,7 +61,7 @@
                         <p class="card-text border text-center">Aqui se ingresaran las Respuesta cuando haga la Operacion</p>
                         <p>Si las Respuestas son Negativas no es Rentable</p>
                         
-                        {%for r_equilibrio,r_ventas,r_costo,r_margen,r_utilidad in calculo%}
+                        {%for r_equilibrio,r_ventas,r_costo,r_margen,r_utilidad  in calculo%}
                             <p> Estas son las unidades que tienes que vender para estar en punto de Equilibrio : {{r_equilibrio}}</p>
                             <p> Dinero de las Ventas: {{r_ventas}}</p>
                             <p> El Costo Variable es: {{r_costo}}</p>
@@ -75,15 +75,9 @@
                 </div>
             </div>
 
-        <div class="row">
+        <div class="row ">
             <div class=" col-12 col-lg-12 mt-5 ">
-                {%if calculo%}
-                    <a href="{{url_for('graficas', lista=calculo )}}" class="btn btn-outline-primary w-100 rounded-pill">Ver Grafica</a>
-                {%endif%}
-                
-                
-                
-               
+                <img src="{{url}}" alt="no encontrada">
             </div>
         </div>
         
