@@ -74,12 +74,13 @@
                     
                 </div>
             </div>
-
-        <div class="row ">
-            <div class=" col-12 col-lg-12 mt-5 ">
-                <img src="{{url}}" alt="no encontrada">
+        {%if url%}
+            <div class="row ">
+                <div class=" col-12 col-lg-12 mt-5 ">
+                    <img src="{{url}}" alt="no encontrada">
+                </div>
             </div>
-        </div>
+        {%endif%}
         
         <div class="row ">
             <div class=" col-12 col-lg-12 mt-5 ">

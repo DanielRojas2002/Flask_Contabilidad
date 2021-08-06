@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt 
 import sys
 import datetime
+from os import remove
 
 class MetodoDelIngreso:
     def __init__ (self,II,IP,IN,D,BC,R,RT,INFE):
@@ -108,13 +109,11 @@ class Equilibrio():
         plt.title("Grafica de Punto de Equilibrio")
         
         plt.text(equilibrio,It,". Equilibrio",rotation=45)
-        
+        url='static/graficas/'+correo+"/plot.png"
+
         
         plt.savefig('static/graficas/'+correo+"/plot.png")
-        
-        url='static/graficas/'+correo+"/plot.png"
-        
-
+    
         return url
         
 

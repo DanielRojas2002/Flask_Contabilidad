@@ -45,6 +45,7 @@ lista=[]
 lista2=[]
 valores=""
 grafica=""
+url=""
 app=Flask(__name__,template_folder="Templates")
 
 app.config.from_object(Config)
@@ -214,9 +215,11 @@ def UTILIDAD():
     email=correo
     global lista
     global lista2
+    global url
     lista2=[]
     global grafica
     grafica=""
+    url=""
     lista=[]
     form=Utilidad(request.form)
     valores=obtener_datos_Utilidad(email)
